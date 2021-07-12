@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,14 +10,14 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/nameTodoTextView"
+            android:id="@+id/nameTodoLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Nazwa zadania"
+            android:text="@string/todo_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +29,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameTodoTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTodoLabel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -42,37 +41,40 @@
         android:layout_marginVertical="20dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deadlineLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/deadlineTodoTextView"
+            android:id="@+id/deadlineTodoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Data wykonania"
+            android:text="@string/deadline_label"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/deadlineTodoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/deadlineTodoTextView"
-            app:layout_constraintStart_toStartOf="@+id/deadlineTodoTextView"
-            app:layout_constraintTop_toBottomOf="@+id/deadlineTodoTextView" />
+            app:layout_constraintEnd_toEndOf="@+id/deadlineTodoLabel"
+            app:layout_constraintStart_toStartOf="@+id/deadlineTodoLabel"
+            app:layout_constraintTop_toBottomOf="@+id/deadlineTodoLabel" />
 
         <ImageButton
+            android:id="@+id/calendarImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/ic_calendar_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/deadlineTodoTextView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/calendar_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -87,42 +89,43 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/categoryLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Wybierz kategorie"
+            android:text="@string/choose_category_label"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioGroup
+            android:id="@+id/categoryRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            app:layout_constraintTop_toBottomOf="@+id/categoryLabel">
 
             <RadioButton
                 android:id="@+id/workRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Praca" />
+                android:text="@string/work" />
 
             <RadioButton
                 android:id="@+id/shoppingRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Zakupy" />
+                android:text="@string/shopping" />
 
             <RadioButton
                 android:id="@+id/otherRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inne" />
+                android:text="@string/other" />
 
         </RadioGroup>
 
@@ -141,23 +144,23 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:text="Anuluj"
+            android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/saveTodoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Dodaj zadanie"
+            android:text="@string/add_todo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

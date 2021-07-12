@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoApp.NoActionBar">
         <activity
-            android:name=".TodoDetailsActivity"
+            android:name=".activities.TodoDetailsActivity"
             android:label="@string/title_activity_todo_details"
             android:theme="@style/Theme.TodoApp.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

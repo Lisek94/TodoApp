@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="16dp">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
     <TextView
         android:id="@+id/itemNameTodoTextView"
@@ -11,20 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Zrobic zakupy" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/itemDeadlineTodoTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="16/05/2020" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/itemCategoryTodoTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Zakupy"/>
+        android:layout_height="wrap_content"/>
 
     <View
         android:id="@+id/divider"
