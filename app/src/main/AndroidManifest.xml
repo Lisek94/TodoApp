@@ -12,7 +12,8 @@
         <activity
             android:name=".activities.TodoDetailsActivity"
             android:label="@string/title_activity_todo_details"
-            android:theme="@style/Theme.TodoApp.NoActionBar" />
+            android:theme="@style/Theme.TodoApp.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
