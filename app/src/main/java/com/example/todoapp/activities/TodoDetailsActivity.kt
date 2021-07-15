@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import com.example.todoapp.R
 import com.example.todoapp.databinding.ActivityTodoDetailsBinding
 import com.example.todoapp.viewmodels.TodoViewModel
 import java.text.SimpleDateFormat
@@ -29,21 +30,15 @@ class TodoDetailsActivity : AppCompatActivity() {
         }
 
         binding.calendarImageButton.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val datePickerDialog = DatePickerDialog(
-                this, { _, year, month, day ->
-                    val date = Date(year-1900, month, day, 0, 0, 0)
-                    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    val formattedDate  = dateFormat.format(date)
+            setupCalendarPicker()
+        }
 
-                    binding.deadlineTodoTextView.text = formattedDate
-                    viewModel.onDateTodoChanged(formattedDate)
-                },
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            )
-            datePickerDialog.show()
+        binding.deadlineLayout.setOnClickListener {
+            setupCalendarPicker()
+        }
+
+        binding.deadlineTodoTextView.setOnClickListener {
+            setupCalendarPicker()
         }
 
         binding.categoryRadioGroup.setOnCheckedChangeListener {radioGroup,_ ->
@@ -62,18 +57,36 @@ class TodoDetailsActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupCalendarPicker() {
+        val calendar = Calendar.getInstance()
+        val datePickerDialog = DatePickerDialog(
+            this, { _, year, month, day ->
+                val date = Date(year-1900, month, day, 0, 0, 0)
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val formattedDate  = dateFormat.format(date)
+
+                binding.deadlineTodoTextView.text = formattedDate
+                viewModel.onDateTodoChanged(formattedDate)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+    }
+
     private fun showAlertDialog(status: Boolean) {
         if (status) {
-            Toast.makeText(applicationContext,"Zadanie zapisane poprawnie", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext,getString(R.string.toast_successful_status), Toast.LENGTH_LONG).show()
             finish()
         } else {
             val alertDialog = AlertDialog.Builder(this)
-            alertDialog.setTitle("Informacja")
-            alertDialog.setMessage("Nazwa zadania nie może być pusta")
-                .setPositiveButton("Sprobuj jeszcze raz") {dialog,_ ->
+            alertDialog.setTitle(getString(R.string.alert_dialog_title))
+            alertDialog.setMessage(getString(R.string.alert_dialog_empty_name_message))
+                .setPositiveButton(getString(R.string.alert_dialog_empty_name_positive_button)) { dialog, _ ->
                     dialog.cancel()
                 }
-                .setNegativeButton("Anuluj dodawanie zadania") {_,_ ->
+                .setNegativeButton(getString(R.string.alert_dialog_empty_name_negative_button)) { _, _ ->
                     finish()
                 }
             alertDialog.show()

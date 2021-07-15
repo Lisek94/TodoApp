@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoapp.R
 import com.example.todoapp.adapters.TodoAdapter
 import com.example.todoapp.data.Todo
 import com.example.todoapp.databinding.ActivityMainBinding
@@ -34,27 +35,23 @@ class MainActivity : AppCompatActivity() {
 
         setupAlertForEmptyListTodos()
 
-
         val intent = Intent(this, TodoDetailsActivity::class.java)
 
         binding.addTodoButton.setOnClickListener {
             startActivity(intent)
         }
-
     }
 
     private fun setupAlertForEmptyListTodos() {
-
         listOfTodos.observe(this, {
             if (it.isNotEmpty()) {
                 todoAdapter = TodoAdapter((it))
                 recyclerView.adapter = todoAdapter
             } else {
                 val alertDialog = AlertDialog.Builder(this)
-
-                alertDialog.setTitle("Informacja")
-                alertDialog.setMessage("Lista zadań jest pusta, kliknij + aby dodać nowe zadanie")
-                    .setNegativeButton("Zamknij podpowiedź") {dialog, _ ->
+                alertDialog.setTitle(getString(R.string.alert_dialog_title))
+                alertDialog.setMessage(getString(R.string.alert_dialog_empty_list_message))
+                    .setNegativeButton(getString(R.string.alert_dialog_empty_list_neggative_button)) { dialog, _ ->
                         dialog.cancel()
                     }
                 alertDialog.show()

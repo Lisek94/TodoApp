@@ -20,4 +20,11 @@
     <string name="choose_category_label">Wybierz kategorie</string>
     <string name="cancel">Anuluj</string>
     <string name="add_todo">Dodaj zadanie</string>
+    <string name="alert_dialog_title">Informacja</string>
+    <string name="alert_dialog_empty_list_message">Lista zadań jest pusta, kliknij + aby dodać nowe zadanie</string>
+    <string name="alert_dialog_empty_list_neggative_button">Zamknij podpowiedź</string>
+    <string name="toast_successful_status">Zadanie zapisane poprawnie</string>
+    <string name="alert_dialog_empty_name_message">Nazwa zadania nie może być pusta</string>
+    <string name="alert_dialog_empty_name_positive_button">Sprobuj jeszcze raz</string>
+    <string name="alert_dialog_empty_name_negative_button">Anuluj dodawanie zadania</string>
 </resources>
